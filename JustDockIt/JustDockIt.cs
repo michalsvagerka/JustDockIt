@@ -11,7 +11,7 @@ public sealed class JustDockIt : MonoBehaviour
     private const float AlignSeparationMeters = 1.0f;
     private const float ClosingSpeed = 0.15f;
     
-    // Hotkey: Ctrl+Alt+D (change as you like)
+    // Hotkey: Ctrl+Alt+D 
     private static bool HotkeyPressed() => (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
             && (Input.GetKey(KeyCode.LeftAlt) || Input.GetKey(KeyCode.RightAlt))
             && Input.GetKeyDown(KeyCode.D);
@@ -66,7 +66,7 @@ public sealed class JustDockIt : MonoBehaviour
             return;
         }
 
-        // Require the target be a docking node (ModuleDockingNode implements ITargetable). :contentReference[oaicite:10]{index=10}
+        // Require the target be a docking node 
         ModuleDockingNode dstNode = tgt as ModuleDockingNode;
         if (dstNode == null)
         {
@@ -99,7 +99,7 @@ public sealed class JustDockIt : MonoBehaviour
             return;
         }
 
-        // Port availability: otherNode and state are exposed fields. :contentReference[oaicite:11]{index=11}
+        // Port availability
         if (srcNode.otherNode != null || !string.Equals(srcNode.state, "Ready", StringComparison.OrdinalIgnoreCase))
         {
             Fail($"Source port not ready (state={srcNode.state}).");
@@ -112,7 +112,7 @@ public sealed class JustDockIt : MonoBehaviour
             return;
         }
 
-        // Compatibility check using nodeType/nodeTypes. :contentReference[oaicite:12]{index=12}
+        // Compatibility check using nodeType.
         if (!PortsCompatible(srcNode, dstNode))
         {
             Fail($"Ports not compatible (src={srcNode.nodeType}, dst={dstNode.nodeType}).");
